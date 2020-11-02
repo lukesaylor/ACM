@@ -18,9 +18,20 @@ namespace ACM.BL
         {
             get
             {
-                return LastName + ", " + FirstName;
+                string fullName = LastName;
+                if (!string.IsNullOrWhiteSpace(FirstName))
+                {
+                    if (!string.IsNullOrWhiteSpace(fullName))
+                    {
+                        fullName += ", ";
+                    }
+                    fullName += FirstName;
+                }
+                return fullName;
             }
         }
+
+        public static int InstanceCount { get; set; }
 
 
         private string _lastName;
@@ -34,6 +45,16 @@ namespace ACM.BL
             {
                 _lastName = value;
             }
+        }
+
+        public bool Validate()
+        {
+            var isValid = true;
+
+            if (string.IsNullOrWhiteSpace(LastName)) isValid = false;
+            if (string.IsNullOrWhiteSpace(EmailAddress)) isValid = false;
+
+            return isValid;
         }
     }
 }
