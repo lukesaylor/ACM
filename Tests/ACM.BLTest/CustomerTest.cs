@@ -77,5 +77,41 @@ namespace ACM.BLTest
             Assert.Equal(3, Customer.InstanceCount);
 
         }
+
+        [Fact]
+        public void ValidateValid()
+        {
+            //arrange
+            var customer = new Customer
+            {
+                LastName = "Baggins",
+                EmailAddress = "bigbaggins@hobbit.net"
+            };
+
+            var expected = true;
+
+            // act
+            var actual = customer.Validate();
+
+            //assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ValidateMissingLastName()
+        {
+            //arrange
+            var customer = new Customer
+            {
+                EmailAddress = "FBaggins@hobbit.net"
+            };
+            var expected = false;
+
+            //act
+            var actual = customer.Validate();
+
+            //assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
