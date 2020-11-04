@@ -20,11 +20,11 @@ namespace ACM.BLTest
             //act
             var actual = customerRepository.Retrieve(1);
             //assert
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actual);
-            Assert.Equal(expected, actual);
-
+            Assert.Equal(expected.FirstName, actual.FirstName);
+            Assert.Equal(expected.LastName, actual.LastName);
+            Assert.Equal(expected.EmailAddress, actual.EmailAddress);
+            Assert.Equal(expected.FullName, actual.FullName);
+            
         }
 
          
